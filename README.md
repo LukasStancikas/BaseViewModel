@@ -31,26 +31,26 @@
             disposable.clear()
         }
     }
-    //
+-------------------
     
-data class BaseState(
-    val selectedMenu: Menu = Menu.Main,
-    val effect: Effect = Effect.EmptyEffect
-) {
+    data class BaseState(
+        val selectedMenu: Menu = Menu.Main,
+        val effect: Effect = Effect.EmptyEffect
+    ) {
 
 
-    sealed class Event {
-        object ResetEffect : Event()
-    }
+        sealed class Event {
+            object ResetEffect : Event()
+        }
 
-    sealed class Effect {
-        object EmptyEffect : Effect()
-    }
+        sealed class Effect {
+            object EmptyEffect : Effect()
+        }
 
-    fun reduce(event: Event): BaseState {
-        return when (event) {
-            Event.ResetEffect -> copy(effect = Effect.EmptyEffect)
-            else -> this
+        fun reduce(event: Event): BaseState {
+            return when (event) {
+                Event.ResetEffect -> copy(effect = Effect.EmptyEffect)
+                else -> this
+            }
         }
     }
-}
